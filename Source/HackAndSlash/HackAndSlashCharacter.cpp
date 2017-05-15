@@ -49,10 +49,17 @@ void AHackAndSlashCharacter::SetupPlayerInputComponent(class UInputComponent* Pl
 	// set up gameplay key bindings
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
+	PlayerInputComponent->BindAxis("MoveForward", this, &AHackAndSlashCharacter::MoveForward );
 	PlayerInputComponent->BindAxis("MoveRight", this, &AHackAndSlashCharacter::MoveRight);
 
 	PlayerInputComponent->BindTouch(IE_Pressed, this, &AHackAndSlashCharacter::TouchStarted);
 	PlayerInputComponent->BindTouch(IE_Released, this, &AHackAndSlashCharacter::TouchStopped);
+}
+
+void AHackAndSlashCharacter::MoveForward( float Value )
+{
+	// add movement in that direction
+	AddMovementInput( FVector( -1.0f, 0.0f, 0.0f ), Value );
 }
 
 void AHackAndSlashCharacter::MoveRight(float Value)

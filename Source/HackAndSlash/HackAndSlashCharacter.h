@@ -18,6 +18,8 @@ class AHackAndSlashCharacter : public ACharacter
 
 protected:
 
+	void MoveForward( float Value );
+
 	/** Called for side to side input */
 	void MoveRight(float Val);
 
