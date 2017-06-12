@@ -1,7 +1,7 @@
 // Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
 #include "HASGameMode.h"
-#include "HackAndSlashCharacter.h"
+#include "HASCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 
 AHASGameMode::AHASGameMode()
