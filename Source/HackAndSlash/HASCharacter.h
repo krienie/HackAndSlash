@@ -1,10 +1,13 @@
-// Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
+// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
+
 #pragma once
+
+#include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "HackAndSlashCharacter.generated.h"
+#include "HASCharacter.generated.h"
 
 UCLASS(config=Game)
-class AHackAndSlashCharacter : public ACharacter
+class AHASCharacter : public ACharacter
 {
 	GENERATED_BODY()
 
@@ -17,11 +20,10 @@ class AHackAndSlashCharacter : public ACharacter
 	class USpringArmComponent* CameraBoom;
 
 protected:
-
 	void MoveForward( float Value );
 
 	/** Called for side to side input */
-	void MoveRight(float Val);
+	void MoveRight(float Value);
 
 	/** Handle touch inputs. */
 	void TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location);
@@ -35,7 +37,7 @@ protected:
 
 
 public:
-	AHackAndSlashCharacter();
+	AHASCharacter();
 
 	/** Returns SideViewCameraComponent subobject **/
 	FORCEINLINE class UCameraComponent* GetSideViewCameraComponent() const { return SideViewCameraComponent; }

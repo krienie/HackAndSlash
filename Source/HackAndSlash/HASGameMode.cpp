@@ -1,10 +1,10 @@
-// Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
+// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
-#include "HackAndSlash.h"
-#include "HackAndSlashGameMode.h"
+#include "HASGameMode.h"
 #include "HackAndSlashCharacter.h"
+#include "UObject/ConstructorHelpers.h"
 
-AHackAndSlashGameMode::AHackAndSlashGameMode()
+AHASGameMode::AHASGameMode()
 {
 	// set default pawn class to our Blueprinted character
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnBPClass(TEXT("/Game/SideScrollerCPP/Blueprints/SideScrollerCharacter"));

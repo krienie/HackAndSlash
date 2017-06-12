@@ -1,9 +1,13 @@
-// Copyright 1998-2016 Epic Games, Inc. All Rights Reserved.
+// Copyright 1998-2017 Epic Games, Inc. All Rights Reserved.
 
-#include "HackAndSlash.h"
-#include "HackAndSlashCharacter.h"
+#include "HASCharacter.h"
+#include "Camera/CameraComponent.h"
+#include "Components/CapsuleComponent.h"
+#include "Components/InputComponent.h"
+#include "GameFramework/SpringArmComponent.h"
+#include "GameFramework/CharacterMovementComponent.h"
 
-AHackAndSlashCharacter::AHackAndSlashCharacter()
+AHASCharacter::AHASCharacter()
 {
 	// Set size for collision capsule
 	GetCapsuleComponent()->InitCapsuleSize(42.f, 96.0f);
@@ -44,37 +48,37 @@ AHackAndSlashCharacter::AHackAndSlashCharacter()
 //////////////////////////////////////////////////////////////////////////
 // Input
 
-void AHackAndSlashCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
+void AHASCharacter::SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent)
 {
 	// set up gameplay key bindings
 	PlayerInputComponent->BindAction("Jump", IE_Pressed, this, &ACharacter::Jump);
 	PlayerInputComponent->BindAction("Jump", IE_Released, this, &ACharacter::StopJumping);
-	PlayerInputComponent->BindAxis("MoveForward", this, &AHackAndSlashCharacter::MoveForward );
-	PlayerInputComponent->BindAxis("MoveRight", this, &AHackAndSlashCharacter::MoveRight);
+	PlayerInputComponent->BindAxis("MoveForward", this, &AHASCharacter::MoveForward );
+	PlayerInputComponent->BindAxis("MoveRight", this, &AHASCharacter::MoveRight);
 
-	PlayerInputComponent->BindTouch(IE_Pressed, this, &AHackAndSlashCharacter::TouchStarted);
-	PlayerInputComponent->BindTouch(IE_Released, this, &AHackAndSlashCharacter::TouchStopped);
+	PlayerInputComponent->BindTouch(IE_Pressed, this, &AHASCharacter::TouchStarted);
+	PlayerInputComponent->BindTouch(IE_Released, this, &AHASCharacter::TouchStopped);
 }
 
-void AHackAndSlashCharacter::MoveForward( float Value )
+void AHASCharacter::MoveForward( float Value )
 {
 	// add movement in that direction
 	AddMovementInput( FVector( -1.0f, 0.0f, 0.0f ), Value );
 }
 
-void AHackAndSlashCharacter::MoveRight(float Value)
+void AHASCharacter::MoveRight(float Value)
 {
 	// add movement in that direction
 	AddMovementInput(FVector(0.f,-1.f,0.f), Value);
 }
 
-void AHackAndSlashCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)
+void AHASCharacter::TouchStarted(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	// jump on any touch
 	Jump();
 }
 
-void AHackAndSlashCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location)
+void AHASCharacter::TouchStopped(const ETouchIndex::Type FingerIndex, const FVector Location)
 {
 	StopJumping();
 }
